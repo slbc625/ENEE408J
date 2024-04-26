@@ -36,7 +36,7 @@ AudioConnection          patchCord14(delay5, 0, mixer1, 3);
 AudioConnection          patchCord15(mixer1, 0, i2s2_1, 0);
 // GUItool: end automatically generated code
 
-#define GRANULAR_MEMORY_SIZE 12800  // enough for 290 ms at 44.1 kHz
+#define GRANULAR_MEMORY_SIZE 25600  // enough for 290 ms at 44.1 kHz
 int16_t granularMemory1[GRANULAR_MEMORY_SIZE];
 int16_t granularMemory2[GRANULAR_MEMORY_SIZE];
 int16_t granularMemory3[GRANULAR_MEMORY_SIZE];
@@ -52,10 +52,10 @@ void setup() {
   granular1.beginPitchShift(12);
   granular2.begin(granularMemory2, GRANULAR_MEMORY_SIZE);
   granular2.beginPitchShift(12);
-  granular1.begin(granularMemory3, GRANULAR_MEMORY_SIZE);
-  granular1.beginPitchShift(12);
-  granular2.begin(granularMemory4, GRANULAR_MEMORY_SIZE);
-  granular2.beginPitchShift(12);
+  granular3.begin(granularMemory3, GRANULAR_MEMORY_SIZE);
+  granular3.beginPitchShift(12);
+  granular4.begin(granularMemory4, GRANULAR_MEMORY_SIZE);
+  granular4.beginPitchShift(12);
   //merge together signals
   mixer1.gain(0, 0.25);
   mixer1.gain(1, 0.25);
@@ -69,7 +69,7 @@ void setup() {
   delay2.delay(0,9);
   delay3.delay(0,6);
   delay4.delay(0,3);
-  delay5.delay(0,9);
+  delay5.delay(0,0);
 }
 
 void loop() {
