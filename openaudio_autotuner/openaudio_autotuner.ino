@@ -20,14 +20,14 @@ AudioEffectGain_F32           gain1; //Applies digital gain to audio data.
 AudioConvert_F32toI16         cnvrt2; //output signal, f32
 AudioOutputI2S                i2sOut; //output signal, i16
 
-AudioAnalyzePeak_F32  notefreq;
+AudioAnalyzeNoteFrequency  notefreq;
 //Make all of the audio connections
 AudioConnection       patchCord1(i2sIn,        0, cnvrt1, 0); // connect to input
 AudioConnection_F32   patchCord2(cnvrt1,       0, formantShift, 0);//converts to float
 AudioConnection_F32   patchCord3(formantShift, 0, gain1, 0); //connect to gain
 AudioConnection_F32   patchCord4(gain1,        0, cnvrt2, 0); //connect to the left output
 AudioConnection       patchCord6(cnvrt2,       0, i2sOut, 0);
-AudioConnection_F32  connx(gain1, 0, notefreq, 0); //connects to peak analyzer
+AudioConnection_F32  connx(i2sIn, 0, notefreq, 0); //connects to peak analyzer
 
 //inputs and levels
 float input_gain_dB = 0.0f; //gain on the microphone
